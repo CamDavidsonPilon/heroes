@@ -8,6 +8,7 @@ SELECT
       m2."Name" as "map_name",
       c."Hero Level" as "hero_level",
       c."MMR Before" as "mrr",
+      "Timestamp (UTC)" as timestamp_utc,
       "GameMode" as "game_mode"
 FROM characters c
 JOIN map_heros m1 ON c."HeroID" = m1."ID"
