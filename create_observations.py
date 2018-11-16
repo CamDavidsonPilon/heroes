@@ -8,7 +8,7 @@ import statistics as stats
 from collections import Counter
 
 
-N_GAMES = 200_000
+N_GAMES = 50_000
 CHARS_PER_GAME = 10
 COLS = ["ReplayID", "win", "char", "hero_level", "mrr", "map_name"]
 Row = namedtuple("row", COLS)
@@ -39,9 +39,9 @@ if __name__ == "__main__":
          and (
             map_name ='Hanamura' or map_name = 'Braxis Holdout' or map_name = 'Cursed Hollow' or map_name = 'Infernal Shrines' or map_name = 'Sky Temple' or map_name = 'Towers of Doom'
          )
-         and timestamp_utc < '7/25/2018'
-         and timestamp_utc > '7/10/2018'
-        --LIMIT %s
+         and timestamp_utc < '5/10/2018'
+         and timestamp_utc > '4/26/2018'
+        LIMIT %s
         """ % (",".join(COLS), CHARS_PER_GAME * N_GAMES)
         print(SQL)
         games = []
@@ -109,4 +109,4 @@ if __name__ == "__main__":
                 print(i)
 
         games = pd.DataFrame(games).fillna(0)
-        games.to_csv("obs_matrix_newer_dataset.csv", index=False)
+        games.to_csv("obs_matrix.csv", index=False)
